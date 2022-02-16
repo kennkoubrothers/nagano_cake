@@ -25,7 +25,7 @@ Rails.application.routes.draw do
     sessions: 'public/sessions'
   }
 
-
+  scope module: :public do
     resources :genres, only: [:index]
 
     resources :items, only: [:index, :show]
@@ -43,10 +43,10 @@ Rails.application.routes.draw do
     get "customers/my_page" => "customers#show"
     get "customers/unsubscribe" => "customers#unsubscribe"
     patch "customers/withdraw" => "customers#withdraw"
-
+    
     get 'homes/top'
     get 'homes/about'
-
+  end
 
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
