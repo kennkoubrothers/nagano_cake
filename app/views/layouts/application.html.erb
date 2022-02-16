@@ -8,11 +8,36 @@
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%#= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
-    <%= yield %>
+    <header>
+      <nav class="navber navbar-expand-lg navbar-light bg-light ">
+        <div class="container">
+          <%# if customer_signed_in? %>
+            <%#= render 'layouts/header_customer' %>
+          <%# elsif admin_signed_in? %>
+            <%#= render 'layouts/header_admin' %>
+          <%# else %>
+            <%= render 'layouts/header_logout' %>
+          <%# end %>
+        </div>
+      </nav>
+    </header>
+    <main>
+      <%= yield %>
+    </main>
+    <footer>
+      <div class="container">
+        <div class="row">
+          <div class="col-xs-5 col-xs-offset-9">
+            <p>CopyRight Infratop.inc</p>
+
+          </div>
+        </div>
+      </div>
+    </footer>
 
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
