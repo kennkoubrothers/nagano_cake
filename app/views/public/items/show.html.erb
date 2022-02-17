@@ -1,2 +1,37 @@
-<h1>Public::Items#show</h1>
-<p>Find me in app/views/public/items/show.html.erb</p>
+<div class="container">
+  <div class="row">
+    <div class="col-2">
+      <div class="card">
+        <div class="card-header">
+          ジャンル検索
+        </div>
+        <div class="card-body">
+          <% @genre.each do |genre| %>
+           <p class="card-text"><%= genre.name %></p>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  <div class="col-4">
+    <div>
+      <%= image_tag @item.get.image %>
+    </div>
+  </div>
+  <div class="col-6">
+    <%= form_with model: @item, url: cart_items_path, method: :post, do |f| %>
+    <div class="col-8 d-flex justify-content-between recomend_items">
+      <div class="card" style="width: 10rem;">
+        <svg class="bd-placeholder-img card-img-top" width="100%" height="180" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: Image cap"><title>Placeholder</title><rect fill="#868e96" width="100%" height="100%"/><text fill="#dee2e6" dy=".3em" x="50%" y="50%">Image cap</text></svg>
+        <div class="card-body">
+          <h1><%= image_tag @item.name %></h1>
+          <h2 class="card-text"><%= @item.explanation %></h2>
+          <p class="card-text">¥<%= @item.price %>（税込）</p>
+          <p><%= f.select :quantity, *[1..10], include_blank: "個数選択" %></p>
+          <p><%= f.submit "カートに入れる", class:"btn btn-success btn-lg" %></p>
+        </div>
+      </div>
+    </div>
+    <% end %>
+  </div>
+ </div>
+</div>
