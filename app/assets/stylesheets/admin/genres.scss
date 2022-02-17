@@ -1,3 +1,22 @@
 // Place all the styles related to the admin/genres controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+table {
+  width: 500px;
+  margin-top: 50px;
+}
+table tbody tr td {
+  border: none;
+}
+.head {
+  display: inline-block;
+  margin-left: 50px;
+}
+.body {
+  display: inline-block;
+  margin-left: 220px;
+  border-left: none;
+}
+.genre-name {
+  margin-top: 12px;
+}
