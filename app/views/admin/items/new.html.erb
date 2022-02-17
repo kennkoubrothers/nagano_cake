@@ -1,2 +1,10 @@
-<h1>Admin::Items#new</h1>
-<p>Find me in app/views/admin/items/new.html.erb</p>
+<div class="container">
+    <h4 class="p-4">
+      <span style="background-color: #EEEEEE">商品新規登録</span>
+    </h4>
+    <div class="row">
+        <div class="col-8 offset-2">
+            <%= render "form", item: @item %>
+        </div>
+    </div>
+</div>
