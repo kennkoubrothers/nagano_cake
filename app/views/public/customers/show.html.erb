@@ -1,2 +1,65 @@
-<h1>Public::Customers#show</h1>
-<p>Find me in app/views/public/customers/show.html.erb</p>
+<div class="container">
+  <div class="row">
+    <h3 class="p-3"><span class="header">マイページ</span></h3>
+  </div>
+
+  <div class="form-group row">
+    <div class="col-2">
+      <h3><strong>登録情報</strong></h3>
+    </div>
+    <div class="col-2">
+      <%= link_to "編集する", edit_customers_path, class: "btn btn-success form-control"%>
+    </div>
+  </div>
+
+  <div class="row mb-5">
+    <div class="col-8">
+      <table>
+        <tbody>
+          <tr>
+            <td class="head">氏名</td>
+            <td><%= @customer.family_name + " " + @customer.first_name %></td>
+          </tr>
+          <tr>
+            <td class="head">カナ</td>
+            <td><%= @customer.family_name_kana + " " + @customer.first_name_kana %></td>
+          </tr>
+          <tr>
+            <td class="head">郵便番号</td>
+            <td><%= @customer.postal_code %></td>
+          </tr>
+          <tr>
+            <td class="head">住所</td>
+            <td><%= @customer.address %></td>
+          </tr>
+          <tr>
+            <td class="head">電話番号</td>
+            <td><%= @customer.telephone %></td>
+          </tr>
+          <tr>
+            <td class="head">メールアドレス</td>
+            <td><%= @customer.email %></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <div class="col-2">
+      <h3><strong>配送先</strong></h3>
+    </div>
+    <div class="col-2">
+      <%= link_to "一覧を見る", deliveries_path, class: "btn btn-primary form-control"%>
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <div class="col-2">
+      <h3><strong>注文一覧</strong></h3>
+    </div>
+    <div class="col-2">
+      <%= link_to "一覧を見る", "#", class: "btn btn-primary form-control"%>
+    </div>
+  </div>
+</div>

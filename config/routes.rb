@@ -20,12 +20,9 @@ Rails.application.routes.draw do
 
   end
 
-  devise_for :customers, skip: [:passwords], controllers: {
-    registrations: "public/registrations",
-    sessions: 'public/sessions'
-  }
 
   scope module: :public do
+    patch "customers/withdraw" => "customers#withdraw"
     resources :genres, only: [:index]
 
     resources :items, only: [:index, :show]
@@ -42,12 +39,15 @@ Rails.application.routes.draw do
     resource :customers, only: [:edit, :update]
     get "customers/my_page" => "customers#show"
     get "customers/unsubscribe" => "customers#unsubscribe"
-    patch "customers/withdraw" => "customers#withdraw"
-    
+
     get 'homes/top'
     get 'homes/about'
   end
 
+  devise_for :customers, skip: [:passwords], controllers: {
+    registrations: "public/registrations",
+    sessions: 'public/sessions'
+  }
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
