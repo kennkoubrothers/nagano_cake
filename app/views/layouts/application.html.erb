@@ -13,15 +13,15 @@
 
   <body>
     <header>
-      <nav class="navber navbar-expand-lg navbar-light bg-light ">
+      <nav class="navbar navbar-expand-lg navbar-light bg-light ">
         <div class="container">
-          <%# if customer_signed_in? %>
-            <%#= render 'layouts/header_customer' %>
-          <%# elsif admin_signed_in? %>
-            <%#= render 'layouts/header_admin' %>
-          <%# else %>
+          <% if customer_signed_in? %>
+            <%= render 'layouts/header_customer' %>
+          <% elsif admin_signed_in? %>
+            <%= render 'layouts/header_admin' %>
+          <% else %>
             <%= render 'layouts/header_logout' %>
-          <%# end %>
+          <% end %>
         </div>
       </nav>
     </header>
@@ -29,11 +29,10 @@
       <%= yield %>
     </main>
     <footer>
-      <div class="container">
+      <div class="container mt-5">
         <div class="row">
-          <div class="col-xs-5 col-xs-offset-9">
+          <div class="mx-auto">
             <p>CopyRight Infratop.inc</p>
-
           </div>
         </div>
       </div>
