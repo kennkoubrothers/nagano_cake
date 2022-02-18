@@ -1,5 +1,7 @@
 class Public::CartItemsController < ApplicationController
   def index
+    @cart_items = CartItem.all
+    @cart_item = CartItem.find(params[:id])
   end
 
   def create
@@ -16,5 +18,10 @@ class Public::CartItemsController < ApplicationController
 
   def destroy_all
 
+  end
+
+  private
+  def cart_item_params
+    params.require(:item).permit(:item_id, :quantity)
   end
 end
