@@ -26,6 +26,7 @@
           <h1><%= image_tag @item.name %></h1>
           <h2 class="card-text"><%= @item.explanation %></h2>
           <p class="card-text">¥<%= @item.price %>（税込）</p>
+          <%= f.hidden_field :item, :value => @item.id %>
           <p><%= f.select :quantity, *[1..10], include_blank: "個数選択" %></p>
           <p><%= f.submit "カートに入れる", class:"btn btn-success btn-lg" %></p>
         </div>
