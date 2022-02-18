@@ -22,8 +22,8 @@ class Public::CustomersController < ApplicationController
   def withdraw
     @customer=current_customer
     if @customer.update(is_deleted: true)
-      flash[:notice] = "退会が完了しました。"
       reset_session
+      flash[:notice] = "退会が完了しました。"
       redirect_to new_customer_registration_path
     end
   end
