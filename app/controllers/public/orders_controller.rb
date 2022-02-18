@@ -1,13 +1,14 @@
 class Public::OrdersController < ApplicationController
   def new
+    @order = Order.new
   end
-  
+
   def method_name
-    
+
   end
-  
+
   def confirm
-    
+
   end
 
   def complete
