@@ -1,6 +1,6 @@
 <div class="container">
   <div class="row">
-    <div class="col-2">
+    <div class="col-3 my-4">
       <div class="card">
         <div class="card-header">
           ジャンル検索
@@ -12,23 +12,28 @@
         </div>
       </div>
     </div>
-  <div class="col-8">
+  <div class="col-9">
     <div>
-      <h1 class="my-3">商品一覧<span class="count">（全<%= @items.count %>件）</span></h1>
+      <h1 class="my-3"><strong>商品一覧</strong><span class="count">（全<%= @items.count %>件）</span></h1>
     </div>
-    <% @items.each do |item| %>
-    <div class="col-8 d-flex justify-content-between recomend_items">
-      <div class="card" style="width: 10rem;">
-        <svg class="bd-placeholder-img card-img-top" width="100%" height="180" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: Image cap"><title>Placeholder</title><rect fill="#868e96" width="100%" height="100%"/><text fill="#dee2e6" dy=".3em" x="50%" y="50%">Image cap</text></svg>
+    <div class="item-lists">
+     <% @items.shuffle.first(8).each do |item| %>
+      <div class="card mr-4 mb-4" style="width: 10rem;">
+        <%= link_to item_path(item) do %>
+         <%= attachment_image_tag item, :image, format: "jpg", size:'158x158', class: "card-image-top"%>
+        <% end %>
         <div class="card-body">
-          <p><%= attachment_image_tag item, :image, format:'jpg', size:'245x245' %></p>
-          <p class="card-text"><%= item.name %></p>
-          <p class="card-text"><%= item.price %></p>
+         <p class="card-text text-truncate"><%= item.name %></p>
+         <p class="card-text">¥<%= item.price %></p>
         </div>
       </div>
+     <% end %>
     </div>
-    <% end %>
   </div>
  </div>
 </div>
-<%= paginate @items %>
+<div class="row">
+  <div class="item-lists-paginate">
+   <%= paginate @items %>
+  </div>
+</div>

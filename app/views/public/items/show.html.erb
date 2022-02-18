@@ -1,6 +1,6 @@
 <div class="container">
-  <div class="row">
-    <div class="col-2">
+  <div class="row p-4">
+    <div class="col-3">
       <div class="card">
         <div class="card-header">
           ジャンル検索
@@ -13,26 +13,31 @@
       </div>
     </div>
   <div class="col-4">
-    <div>
-      <%= image_tag @item.get.image %>
-    </div>
+   <div>
+    <%= attachment_image_tag @item, :image, format:'jpg', size:'300x300' %>
+   </div>
   </div>
-  <div class="col-6">
-    <%= form_with model: @item, url: cart_items_path, method: :post, do |f| %>
-    <div class="col-8 d-flex justify-content-between recomend_items">
-      <div class="card" style="width: 10rem;">
-        <svg class="bd-placeholder-img card-img-top" width="100%" height="180" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: Image cap"><title>Placeholder</title><rect fill="#868e96" width="100%" height="100%"/><text fill="#dee2e6" dy=".3em" x="50%" y="50%">Image cap</text></svg>
+  <div class="col-5">
+    <div class="col-12 offset-1">
+      <div>
         <div class="card-body">
-          <h1><%= image_tag @item.name %></h1>
-          <h2 class="card-text"><%= @item.explanation %></h2>
-          <p class="card-text">¥<%= @item.price %>（税込）</p>
-          <%= f.hidden_field :item, :value => @item.id %>
-          <p><%= f.select :quantity, *[1..10], include_blank: "個数選択" %></p>
-          <p><%= f.submit "カートに入れる", class:"btn btn-success btn-lg" %></p>
+          <h2 class="card-text"><%= @item.name %></h2>
+          <h3 class="card-text"><%= @item.explanation %></h3>
+          <h2 class="card-text pt-5">¥<%= @item.price %><span class="tax">（税込）</span></h2>
+        </div>
+        <div class="d-flex">
+          <% if @item.is_active == true %>
+            <%= form_with model: @cart_item,url: cart_items_path, method: :post,local: true do |f| %>
+            <%= f.hidden_field :item_id, :value => @item.id %>
+            <div class="d-flex">
+             <p class="pt-5 offset-1"><%= f.select :quantity, *[1..10], include_blank: "個数選択" %></p>
+             <p class="pt-5 offset-4"><%= f.submit "カートに入れる", class:"btn btn-success btn-lg" %></p>
+            </div>
+            <% end %>
+          <% end %>
         </div>
       </div>
     </div>
-    <% end %>
   </div>
  </div>
 </div>
