@@ -16,7 +16,7 @@ Rails.application.routes.draw do
 
     resources :customers, only: [:index, :show, :edit, :update]
 
-    get 'homes/top'
+    root to: "items#index"
 
   end
 
@@ -25,7 +25,11 @@ Rails.application.routes.draw do
     patch "customers/withdraw" => "customers#withdraw"
     resources :genres, only: [:index]
 
-    resources :items, only: [:index, :show]
+    resources :items do
+      collection do
+        get "search"
+      end
+    end
 
     get "orders/complete" => "orders#complete"
     resources :orders, only: [:new, :create, :index, :show]
@@ -40,7 +44,7 @@ Rails.application.routes.draw do
     get "customers/my_page" => "customers#show"
     get "customers/unsubscribe" => "customers#unsubscribe"
 
-    get 'homes/top'
+    root to: 'homes#top'
     get 'homes/about'
   end
 
