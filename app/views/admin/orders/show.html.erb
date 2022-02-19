@@ -1,2 +1,76 @@
-<h1>Admin::Orders#show</h1>
-<p>Find me in app/views/admin/orders/show.html.erb</p>
+<div class="container">
+  <div class="row">
+    <h3 class="p-3"><span class="header">注文履歴詳細</span></h3>
+  </div>
+
+  <div class="form-group row">
+    <div class="col-2">購入者</div>
+    <div class="col-2"><%= @order.customer.name %></div>
+  </div>
+
+  <div class="form-group row">
+    <div class="col-2">注文日</div>
+    <div class="col-5"><%= @order.created_at %></div>
+  </div>
+
+  <div class="form-group row">
+    <div class="col-2">配送先</div>
+    <div class="col-5">〒<%= @order.postal_code %> <%= @order.address %> <%= @order.name %></div>
+  </div>
+
+  <div class="form-group row">
+    <div class="col-2">支払い方法</div>
+    <div class="col-5"><%= @order.payment_method %></div>
+  </div>
+
+  <div class="form-group row">
+    <div class="col-2">注文ステータス</div>
+        <%= form_with model: @order, url:admin_order_path(@order.id), method: :patch, local: true do |f| %>
+          <td>
+            <%= f.select :status, options_for_select(Order.statuses_i18n.invert)  %>
+            <%= f.submit "更新", class: "btn btn-success mr-5" %>
+          </td>
+        <% end %>
+    <div class="col-8">入金待ち/<%= link_to "更新", admin_order_path(@order.id), method: :patch, class: "btn btn-success mr-5" %></div>
+  </div>
+
+  <div class="row">
+    <table>
+      <thead>
+        <tr>
+          <th>商品名</th>
+          <th>単価（税込）</th>
+          <th>数量</th>
+          <th>小計</th>
+          <th>製作ステータス</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @orders.each do |order| %>
+          <tr>
+           <td><%= order.order_detail.item.name %></td>
+           <td><%= order.order_detail.purchese_price %></td>
+           <td><%= order.order_detail.quantity %></td>
+           <td><%= order.order_detail.item.with_tax_price * quantity %></td>
+        <% end %>
+        <%= form_with model: @order, url:admin_path(@order.id), method: :patch, local: true do |f| %>
+          <td>
+            <%= f.select :status, options_for_select(OrderDetails.making_statuses_i18n.invert)  %>
+            <%= f.submit "更新", class: "btn btn-success mr-5" %>
+          </td>
+        <% end %>
+          </tr>
+      </tbody>
+    </table>
+    <table>
+      <tbody>
+        <tr>
+          <td>商品合計<%= @total %>円</td>
+          <td>送料 <%= @order.postage %>円</td>
+          <td>請求金額合計<%= @total.to_i + @order.postage.to_i %>円</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
