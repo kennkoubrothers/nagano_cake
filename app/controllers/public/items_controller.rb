@@ -1,5 +1,4 @@
 class Public::ItemsController < ApplicationController
-  before_action :set_q, only: [:index, :search]
 
   def index
     @items = Item.page(params[:page])
@@ -12,13 +11,4 @@ class Public::ItemsController < ApplicationController
     @cart_item =CartItem
   end
 
-  def search
-    @results = @q.result
-  end
-
-  private
-
-  def set_q
-    @q = Item.ransack(params[:q])
-  end
 end
