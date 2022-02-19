@@ -1,21 +1,17 @@
 <div class="container">
   <div class="row">
-    <div class="">
-      <h3 class="p-5">
-       <span style="background-color: #EEEEEE">ジャンル編集</span>
-      </h3>
-    </div>
+    <h3 class="p-3"><span class="header">ジャンル編集</span></h3>
   </div>
 
-  <div class="row">
     <%= form_with model: @genre,url: admin_genre_path(@genre), method: :patch do |f| %>
-     <p>
-      <strong>ジャンル名</strong>
-      <span class="mx-5">
-       <%= f.text_field :name, autofocus: true, placeholder: "キャンディ" %>
-      </span>
-       <%= f.submit "変更を保存", class:"btn btn-success btn-lg" %>
-     </p>
+      <div class="form-group row">
+        <%= f.label :ジャンル名, class:"col-2 col-form-label font-weight-bold"%>
+        <div class="col-2">
+          <%= f.text_field :name, autofocus: true, placeholder: "キャンディ", class:"form-control"  %>
+        </div>
+        <div class="col-2">
+          <%= f.submit '変更を保存', class:"btn btn-success btn-bg form-control" %>
+        </div>
+      </div>
     <% end %>
-  </div>
 </div>

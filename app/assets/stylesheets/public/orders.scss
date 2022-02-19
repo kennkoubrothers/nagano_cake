@@ -4,3 +4,13 @@
 .orders-complete {
   margin: 100px auto;
 }
+
+.customer_orders_table{
+  width: 100%;
+  tr,th,td{
+    border: 2px solid black;
+  }
+  th{
+    height: 50px;
+  }
+}

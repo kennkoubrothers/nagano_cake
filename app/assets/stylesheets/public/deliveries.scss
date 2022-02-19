@@ -6,9 +6,12 @@
   background-color: #eeeeee;
 }
 
-th,
-tr,
-td{
-  border: 2px solid black;
-  padding: 10px;
+.deliveries_table{
+  width: 100%;
+  th,
+  tr,
+  td{
+    border: 2px solid black;
+    padding: 10px;
+  }
 }
