@@ -4,10 +4,10 @@
   </div>
 
   <div class="row">
-    <div class="col-8 offset-2 d-flex justify-content-between">
+    <div class="col-8 offset-2 d-flex">
       <% @results.each do |item| %>
         <%= link_to item_path(item.id) do%>
-          <div class="card" style="width: 10rem;">
+          <div class="card mr-4" style="width: 10rem;">
             <%= attachment_image_tag item, :image, format: "jpg", size:'158x158', class: "card-image-top"%>
             <div class="card-body">
               <p class="card-text text-truncate text-dark"><%= item.name %></p>

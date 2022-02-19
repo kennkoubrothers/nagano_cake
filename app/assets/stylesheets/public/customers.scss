@@ -6,8 +6,14 @@
   background-color: #eeeeee;
 }
 
-table{
+.customer_table{
   width: 100%;
+  th,
+  tr,
+  td{
+    border: 2px solid black;
+    padding: 10px;
+  }
 }
 
 .common{
@@ -15,3 +21,4 @@ table{
   background-color: #eeeeee;
   border-right: 2px solid black;
 }
+

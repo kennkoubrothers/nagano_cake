@@ -1,3 +1,13 @@
 // Place all the styles related to the admin/items controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+
+// .icon{
+//   margin-left: 900px;
+// }
+
+.admin_items_table{
+  tr,th,td{
+    border: none;
+  }
+}
