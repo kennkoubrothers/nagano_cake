@@ -10,7 +10,7 @@ import * as ActiveStorage from "@rails/activestorage"
 import "channels"
 import '@fortawesome/fontawesome-free/js/all'
 require("@rails/ujs").start()
-// マージする時消す！！
+
 Rails.start()
 Turbolinks.start()
 ActiveStorage.start()
