@@ -13,12 +13,14 @@
           </tr>
         </thead>
         <tbody>
+          <% @cart_items.each do |cart_item| %>
           <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
+            <td><%= cart_item.item.name %></td>
+            <td><%= cart_item.item.with_tax_price %></td>
+            <td><%= cart_item.quantity %></td>
+            <td><%= cart_item.subtotal %></td>
           </tr>
+          <% end %>
         </tbody>
       </table>
       <table class="table table-bordered col-3 offset-1">
@@ -28,11 +30,11 @@
         </tr>
         <tr>
           <td class="common">商品合計</td>
-          <td></td>
+          <td><%= @total %></td>
         </tr>
         <tr>
           <td class="common">請求額</td>
-          <td></td>
+          <td><%= @total_price %></td>
         </tr>
       </table>
     </div>
@@ -51,8 +53,17 @@
         <%= @order.name %>
       </p>
     </div>
-      <div class="row mt-3">
-        <!--<ここにhidden_fieldで情報を送るフォームを作る>-->
-        <p class="col-2 btn btn-success btn-lg mx-auto">注文を確定する</p>
+    <div class="row mt-3">
+    <%= form_with model: @order,url: orders_path,method: :post, local:true do |f| %>
+    　<%= f.hidden_field :payment_method %>
+    　<%= f.hidden_field :name %>
+      <%= f.hidden_field :address %>
+      <%= f.hidden_field :postal_code %>
+      <%= f.hidden_field :total_price, value: @total_price %>
+      <%= f.hidden_field :postage, value: @postage %>
+      <div class="col-2  mx-auto">
+        <%= f.submit "注文を確定する" ,class:"btn btn-success btn-lg" %>
       </div>
+    <% end %>
+    </div>
 </div>
