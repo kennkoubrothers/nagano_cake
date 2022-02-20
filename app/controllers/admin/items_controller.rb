@@ -6,9 +6,11 @@ class Admin::ItemsController < ApplicationController
   def create
     @item = Item.new(item_params)
     if @item.save
-      redirect_to admin_items_path, notice: "You have created item successfully."
+      flash[:notice] = "登録が完了しました。"
+      redirect_to admin_items_path
     else
-      render 'new'
+      flash[:alert] = "空欄は無効です。"
+      render :new
     end
   end
 
@@ -27,9 +29,11 @@ class Admin::ItemsController < ApplicationController
   def update
     @item = Item.find(params[:id])
     if @item.update(item_params)
-      redirect_to admin_item_path(@item), notice: "You have updated item successfully."
+      flash[:notice] = "更新が完了しました。"
+      redirect_to admin_item_path(@item)
     else
-      render "edit"
+      flash[:alert] = "空欄は無効です。"
+      render :edit
     end
   end
 
