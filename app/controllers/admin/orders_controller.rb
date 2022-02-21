@@ -16,6 +16,11 @@ class Admin::OrdersController < ApplicationController
     redirect_to admin_order_path(@order)
   end
 
+  def customer_index
+    @customer=Customer.find(params[:id])
+    @orders=@customer.orders.all
+  end
+
   private
   def order_params
     params.require(:order).permit(:status)
