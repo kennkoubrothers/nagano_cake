@@ -3,6 +3,6 @@ class Order < ApplicationRecord
   enum status: { waiting_deposit: 0, confirm_deposit: 1, in_production: 2, ready_ship: 3, complete_ship: 4 }
 
   belongs_to :customer
-  has_many :order_datails, dependent: :destroy
+  has_many :order_details, dependent: :destroy
 
 end
