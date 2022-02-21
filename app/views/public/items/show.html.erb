@@ -23,7 +23,7 @@
         <div class="card-body">
           <h2 class="card-text"><%= @item.name %></h2>
           <h3 class="card-text"><%= @item.explanation %></h3>
-          <h2 class="card-text pt-5">¥<%= @item.with_tax_price %><span class="tax">（税込）</span></h2>
+          <h2 class="card-text pt-5">¥<%= @item.with_tax_price.to_s(:delimited, delimiter: ',') %><span class="tax">（税込）</span></h2>
         </div>
         <div class="d-flex">
           <% if @item.is_active == true %>
