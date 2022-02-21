@@ -33,6 +33,7 @@ Rails.application.routes.draw do
 
     get "orders/complete" => "orders#complete"
     post "orders/confirm" => "orders#confirm"
+    post 'orders/back'
     resources :orders, only: [:new, :create, :index, :show]
 
     delete "cart_items/destroy_all" => "cart_items#destroy_all"
