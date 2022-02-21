@@ -17,18 +17,24 @@
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td class="align-middle">2019/11/5</td>
-            <td class="align-middle">
-              〒1500041</br>
-              東京都渋谷区神南1丁目19-11 パークウェーススクエア24階 </br>
-              山田花子
+          <% @orders.each do |order| %>
+            <tr>
+              <td class="align-middle"><%= order.created_at.strftime('%Y/%m/%d') %></td>
+              <td class="align-middle">
+                〒<%= order.postal_code %></br>
+                <%= order.address %> </br>
+                <%= order.name %>
+                </td>
+              <td class="align-middle">
+                <% order.order_details.each do |order_details|%>
+                  <%= order_details.item.name %></br>
+                <% end %>
               </td>
-            <td class="align-middle">イチゴのショートケーキ</td>
-            <td class="align-middle">2,300円</td>
-            <td class="align-middle">入金確認</td>
-            <td class="align-middle text-center"><%= link_to "表示する", "#", class: "btn btn-primary"%></td>
-          </tr>
+              <td class="align-middle"><%= order.total_price.to_s(:delimited, delimiter: ',') %>円</td>
+              <td class="align-middle"><%= order.status_i18n %></td>
+              <td class="align-middle text-center"><%= link_to "表示する", order_path(order.id), class: "btn btn-primary"%></td>
+            </tr>
+          <% end %>
         </tbody>
       </table>
     </div>
