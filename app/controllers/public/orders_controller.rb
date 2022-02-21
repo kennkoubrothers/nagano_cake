@@ -5,23 +5,6 @@ class Public::OrdersController < ApplicationController
     @order = Order.new
   end
 
-  def create
-    @order = Order.new(order_params)
-    @order.customer_id = current_customer.id
-    @order.save
-    @cart_items = current_customer.cart_items
-
-    @cart_items.each do |cart_item|
-      @orderdetail = OrderDetail.new
-      @orderdetail.item_id = cart_item.item_id
-      @orderdetail.order_id = @order.id
-      @orderdetail.purchase_price = cart_item.item.with_tax_price
-      @orderdetail.quantity = cart_item.quantity
-      @orderdetail.save
-    end
-    @cart_items.destroy_all
-    redirect_to orders_complete_path
-  end
 
   def confirm
     @cart_items = current_customer.cart_items.all
@@ -42,6 +25,44 @@ class Public::OrdersController < ApplicationController
     elsif params[:order][:select_address] == "2"
       @order = Order.new(order_params)
     else
+      flash[:notice] = "配送先を選択してください"
+      @order = Order.new(order_params)
+      render :new
+    end
+  end
+
+  def back
+    @order = Order.new(order_params)
+    render :new
+  end
+
+  def create
+    @order = Order.new(order_params)
+    @order.customer_id = current_customer.id
+
+    if @order.save
+      flash[:notice] = "注文を受け付けました"
+      if params[:order][:select_address] == "2"
+        @delivery = Delivery.new
+        @delivery.customer_id = current_customer.id
+        @delivery.name = @order.name
+        @delivery.postal_code = @order.postal_code
+        @delivery.address = @order.address
+        @delivery.save
+      end
+      @cart_items = current_customer.cart_items
+      @cart_items.each do |cart_item|
+        @orderdetail = OrderDetail.new
+        @orderdetail.item_id = cart_item.item_id
+        @orderdetail.order_id = @order.id
+        @orderdetail.purchase_price = cart_item.item.with_tax_price
+        @orderdetail.quantity = cart_item.quantity
+        @orderdetail.save
+      end
+      @cart_items.destroy_all
+      redirect_to orders_complete_path
+    else
+      @order = Order.new(order_params)
       render :new
     end
   end
