@@ -13,6 +13,7 @@ Rails.application.routes.draw do
     patch "admin/order_details/:id" => "order_details#update"
 
     resources :orders, only: [:index, :show, :update]
+    get "customer/:id/index" => "orders#customer_index", as: 'customer_index'
 
     resources :customers, only: [:index, :show, :edit, :update]
 

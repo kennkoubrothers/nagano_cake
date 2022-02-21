@@ -50,7 +50,7 @@
   <div class="row">
     <div class="col-7 offset-2">
       <%= link_to "編集する", edit_admin_customer_path(@customer.id), class: "btn btn-success mr-5"%>
-      <%= link_to "注文履歴一覧を見る", "#", class: "btn btn-primary"%>
+      <%= link_to "注文履歴一覧を見る", admin_customer_index_path(@customer.id), class: "btn btn-primary"%>
     </div>
   </div>
 </div>

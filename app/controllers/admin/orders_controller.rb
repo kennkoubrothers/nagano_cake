@@ -25,6 +25,11 @@ class Admin::OrdersController < ApplicationController
     end
   end
 
+  def customer_index
+    @customer=Customer.find(params[:id])
+    @orders=@customer.orders.all
+  end
+
   private
   def order_params
     params.require(:order).permit(:status)
