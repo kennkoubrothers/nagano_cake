@@ -55,8 +55,8 @@
   </div>
   <div class="row mt-4 justify-content-center">
     <%= form_with model: @order,url: orders_back_path,method: :post, local:true do |f| %>
-    　<%= f.hidden_field :payment_method %>
-    　<%= f.hidden_field :name %>
+      <%= f.hidden_field :payment_method %>
+      <%= f.hidden_field :name %>
       <%= f.hidden_field :address %>
       <%= f.hidden_field :postal_code %>
       <%= f.hidden_field :total_price, value: @total_price %>
@@ -67,8 +67,8 @@
       </div>
       <% end %>
     <%= form_with model: @order,url: orders_path,method: :post, local:true do |f| %>
-    　<%= f.hidden_field :payment_method %>
-    　<%= f.hidden_field :name %>
+      <%= f.hidden_field :payment_method %>
+      <%= f.hidden_field :name %>
       <%= f.hidden_field :address %>
       <%= f.hidden_field :postal_code %>
       <%= f.hidden_field :total_price, value: @total_price %>
