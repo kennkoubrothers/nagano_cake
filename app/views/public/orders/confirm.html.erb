@@ -53,6 +53,7 @@
       <%= @order.name %>
     </div>
   </div>
+
   <div class="row mt-4 justify-content-center">
     <%= form_with model: @order,url: orders_back_path,method: :post, local:true do |f| %>
       <%= f.hidden_field :payment_method %>

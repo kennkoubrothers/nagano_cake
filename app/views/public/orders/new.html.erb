@@ -2,6 +2,7 @@
   <div class="row">
     <h3 class="p-3"><span class="header">注文情報入力</span></h3>
   </div>
+
   <%= form_with model: @order, url: orders_confirm_path, method: :post, local: true do |f| %>
     <h5>支払方法</h5>
     <div class="form-group row">
@@ -52,6 +53,7 @@
         <%= f.text_field :name, placeholder:"令和道子", class: "form-control form-control-sm" %>
       </div>
     </div>
+
     <div class="row justify-content-center">
       <div class="col-3 mx-3">
       <%= link_to "カートに戻る",cart_items_path, class: "btn btn-primary btn-lg" %>
