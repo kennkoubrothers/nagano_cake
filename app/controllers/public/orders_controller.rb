@@ -32,7 +32,7 @@ class Public::OrdersController < ApplicationController
   end
 
   def back
-    @order = Order.new(order_params)
+    @order = Order.new
     render :new
   end
 
