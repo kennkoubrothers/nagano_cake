@@ -14,7 +14,7 @@
     </div>
   <div class="col-9">
     <div>
-      <h1 class="my-3"><strong>商品一覧</strong><span class="count">（全<%= @items.count %>件）</span></h1>
+      <h1 class="my-3"><strong>商品一覧</strong><span class="count">（全<%= @itemscount.count %>件）</span></h1>
     </div>
     <div class="item-lists">
      <% @items.shuffle.first(8).each do |item| %>
