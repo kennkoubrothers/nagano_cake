@@ -1,6 +1,6 @@
 class Admin::OrdersController < ApplicationController
   def index
-    @orders = Order.all
+    @orders = Order.page(params[:page])
   end
 
   def show
@@ -27,7 +27,7 @@ class Admin::OrdersController < ApplicationController
 
   def customer_index
     @customer=Customer.find(params[:id])
-    @orders=@customer.orders.all
+    @orders=@customer.orders.page(params[:page])
   end
 
   private

@@ -9,7 +9,7 @@ class Admin::GenresController < ApplicationController
     @genres = Genre.all
     if @genre.save
       flash[:notice] = "登録が完了しました。"
-      redirect_to edit_admin_genre_path(genre)
+      redirect_to edit_admin_genre_path(@genre.id)
     else
       flash[:alert] = "空欄は無効です。"
       render :index
