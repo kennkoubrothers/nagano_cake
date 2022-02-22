@@ -58,8 +58,10 @@
       〒<%= @order.postal_code %><%= @order.address %><br>
       <%= @order.name %>
     </div>
+  </div>
 
-    <div class="row mt-4 justify-content-center">
+
+  <div class="row mt-4 justify-content-center">
     <%= form_with model: @order,url: orders_back_path,method: :post, local:true do |f| %>
     　<%= f.hidden_field :payment_method %>
     　<%= f.hidden_field :name %>
@@ -68,7 +70,7 @@
       <%= f.hidden_field :total_price, value: @total_price %>
       <%= f.hidden_field :postage, value: @postage %>
       <%= f.hidden_field :select_address, value: params[:order][:select_address] %>
-      <div class="col-2  mx-auto ">
+      <div class="col-2">
         <%= f.submit "入力画面に戻る" ,class:"btn btn-primary btn-lg" %>
       </div>
       <% end %>
@@ -81,7 +83,7 @@
       <%= f.hidden_field :total_price, value: @total_price %>
       <%= f.hidden_field :postage, value: @postage %>
       <%= f.hidden_field :select_address, value: params[:order][:select_address] %>
-      <div class="col-2  mx-auto ">
+      <div class="col-2">
         <%= f.submit "注文を確定する" ,class:"btn btn-success btn-lg" %>
       </div>
     <% end %>
