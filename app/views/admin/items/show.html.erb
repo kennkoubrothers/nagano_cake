@@ -1,2 +1,49 @@
-<h1>Admin::Items#show</h1>
-<p>Find me in app/views/admin/items/show.html.erb</p>
+<div class="container">
+  <div class="row">
+    <h3 class="p-3"><span class="header">商品詳細</span></h3>
+  </div>
+
+  <div class="row">
+    <div class="col-3 offset-1">
+      <%= attachment_image_tag @item, :image, format: "jpg", size:'245x245' %>
+    </div>
+    <div class="col-5">
+      <table class="table admin_items_table">
+        <tbody>
+          <tr>
+            <td>商品名</td>
+            <td><%= @item.name%></td>
+          </tr>
+          <tr>
+            <td>商品説明</td>
+            <td><%= @item.explanation %></td>
+          </tr>
+          <tr>
+            <td>ジャンル</td>
+            <td><%= @item.genre.name %></td>
+          </tr>
+          <tr>
+            <td>税込価格（税抜価格）</td>
+            <td><%= @item.with_tax_price.to_s(:delimited, delimiter: ',') %> (<%= @item.price.to_s(:delimited, delimiter: ',') %>)円</td>
+          </tr>
+          <tr>
+            <td>販売ステータス</td>
+            <td>
+              <% if @item.is_active == true %>
+                <p class="text-success font-weight-bold">販売中</p>
+              <% else %>
+                <p class="text-secondary font-weight-bold">販売停止中</p>
+              <% end %>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="row">
+      <div class="col-4 offset-5">
+          <%= link_to "編集する", edit_admin_item_path(@item.id), class: "btn btn-success" %>
+	   </div>
+	</div>
+</div>

@@ -1,3 +1,15 @@
 // Place all the styles related to the admin/genres controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+
+.admin_genres_table{
+    tr,td{
+        border: none;
+    }
+    tr{
+        border-bottom: 2px solid #eeeeee;
+    }
+    .btn{
+        margin-left: 100px;
+    }
+}

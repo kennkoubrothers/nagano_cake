@@ -1,3 +1,71 @@
 // Place all the styles related to the public/orders controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+.orders-complete {
+  margin: 100px auto;
+}
+
+.customer_orders_table{
+  width: 100%;
+  tr,th,td{
+    border: 2px solid black;
+  }
+  th{
+    height: 50px;
+  }
+}
+
+.customer_order_table{
+  width: 100%;
+  td{
+    border: 2px solid black;
+    padding: 10px 5px;
+  }
+  th{
+    height: 50px;
+  }
+}
+
+.customer_order_payment_table{
+  width: 100%;
+  td{
+    border: 2px solid black;
+    padding: 10px 5px;
+  }
+  th{
+    height: 50px;
+  }
+}
+
+.customer_order_show_table{
+  width: 100%;
+  td{
+    border: 2px solid black;
+    padding: 10px 5px;
+  }
+  th{
+    height: 50px;
+  }
+}
+
+.customer_order_confirm_table{
+  width: 100%;
+  tr,th,td{
+    border: 2px solid black;
+  }
+  th{
+    height: 50px;
+  }
+  td{
+    padding-left: 5px;
+  }
+}
+
+.customer_order_confirm_payment_table{
+  width: 100%;
+  td{
+    border: 2px solid black;
+    padding-left: 5px;
+    height: 50px;
+  }
+}

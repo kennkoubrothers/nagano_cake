@@ -13,3 +13,11 @@
  *= require_tree .
  *= require_self
  */
+*{
+  font-family: Hannotate SC;
+}
+
+.skin-bgHeader {
+background-color: #afeeee;
+background: linear-gradient(#afeeee, #ffffff);
+}
