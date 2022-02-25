@@ -1,24 +1,59 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+# ながのケーキ
 
-Things you may want to cover:
+__【概要】__
 
-* Ruby version
+　町のケーキ屋さんのECサイト開発。
+____________________________________________________________________________<br>
 
-* System dependencies
+__【開発環境】__
 
-* Configuration
+　・AWSCloud9 <br>
+  ・Ruby 2.6.3 <br>
+  ・Rails 6.1.4.6 <br>
+  ・HTML <br>
+  ・SCSS <br>
+____________________________________________________________________________<br>
 
-* Database creation
+__【gem】__
 
-* Database initialization
+・devise<br>
+・ransack<br>
+・refile<br>
+・refile-mini_magick<br>
+・pry-rails<br>
+・kaminari','~> 1.2.1<br>
+・enum_help
 
-* How to run the test suite
+____________________________________________________________________________<br>
 
-* Services (job queues, cache servers, search engines, etc.)
+__【実装機能】__
 
-* Deployment instructions
+（会員側）
 
-* ...
+・ログイン/ログアウト<br>
+・会員登録/退会（論理削除）/編集<br>
+・配送先登録/更新/削除<br>
+・商品検索<br>
+・カート機能<br>
+・注文機能<br>
+・注文履歴一覧/詳細確認
+
+____________________________________________________________________________<br>
+
+(管理者側)
+
+・ログイン/ログアウト<br>
+・注文履歴一覧（会員ごと含む）/詳細<br>
+・各種ステータス切り替え<br>
+・会員一覧/詳細/編集<br>
+・商品登録/一覧/詳細/編集<br>
+・ジェンル登録/一覧/編集
+
+____________________________________________________________________________<br>
+
+__【ER図】__
+
+![ながのケーキER図](images/er.jpg)
+
